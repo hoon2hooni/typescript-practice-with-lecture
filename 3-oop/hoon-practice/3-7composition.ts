@@ -8,7 +8,13 @@
   interface CoffeeMaker {
     makeCoffee(shots: number): CoffeeCup;
   }
+  interface MilkFrother {
+    makeMilk(cup: CoffeeCup): CoffeeCup;
+  }
 
+  interface SugarProvider {
+    addSugar(cup: CoffeeCup): CoffeeCup:
+  }
   class CoffeeMachine implements CoffeeMaker {
     private static BEANS_GRAMM_PER_SHOT: number = 7; // class level
     private coffeeBeans: number = 0; // instance (object) level
@@ -114,7 +120,7 @@
     }
   }
 
-  class SweetCoffeeLatteMachine extends CoffeeMachine {
+  class SweetCaffeeLatteMachine extends CoffeeMachine {
     constructor(
       private beans: number,
       private milk: CheapMilkSteamer,
@@ -138,6 +144,15 @@
     new CaffeLatteMachine(16, '1'),
     new SweetCoffeeMaker(16),
   ];
+  const cheapMilkMaker = new CheapMilkSteamer();
+  const candySugar = new AutomaticSugarMixer();
+  const sweetMachine = new SweetCoffeeLatteMachine(12, candySugar);
+  const latteMachine = new CaffeLatteMachine(12, "SS", cheapMilkMaker);
+  const SweetLatteMachine = new SweetCaffeeLatteMachine(
+    12,
+    cheapMilkMaker,
+    candySugar,
+  )
   machines.forEach((machine) => {
     console.log('-------------------------');
     machine.makeCoffee(1);
