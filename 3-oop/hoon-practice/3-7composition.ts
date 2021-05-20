@@ -15,6 +15,8 @@
   interface SugarProvider {
     addSugar(cup: CoffeeCup): CoffeeCup:
   }
+
+  //싸구려 우유 거품기
   class CoffeeMachine implements CoffeeMaker {
     private static BEANS_GRAMM_PER_SHOT: number = 7; // class level
     private coffeeBeans: number = 0; // instance (object) level
@@ -79,7 +81,7 @@
     }
   }
   //싸구려 우유 거품기 만들기
-  class CheapMilkSteamer {
+  class CheapMilkSteamer implements MilkFrother {
     private steamMilk(): void {
       console.log('Steaming some milk... ');
     }
@@ -92,7 +94,7 @@
     }
   }
   //설탕 제조기
-  class AutomaticSugarMixer {
+  class AutomaticSugarMixer implements SugarProvider {
     private getSuger() {
       console.log('Getting some sugar from candy');
       return true;
@@ -110,7 +112,7 @@
   class SweetCoffeeMaker extends CoffeeMachine {
     constructor(
       private beans: number,
-      private sugar: AutomaticSugarMixer,
+      private sugar: SugarProvider,
     ) {
       super(beans);
     }
@@ -124,7 +126,7 @@
     constructor(
       private beans: number,
       private milk: CheapMilkSteamer,
-      private sugar: AutomaticSugarMixer
+      private sugar: SugarProvider
     ) {
       super(beans);
     }
@@ -158,3 +160,29 @@
     machine.makeCoffee(1);
   });
 }
+
+//스윗 머신은요 캔디머신 
+// 동일한  
+// 내가 원하는 부품을 가져와서 서로다른 객체를 만들 수 있음
+
+// 내가 원하는 용도에 다라서 다르게 만ㄷ르수 있다.
+
+// 라떼 머신은 그냥 라떼머신.
+// 콜드 밀크 레이커르 ㄹ전달해줌
+// 우리가 원하는 기능들을 조립해서 내가 어떤 커피 기곌르 만들껀지
+// 결정할 수 있음
+
+// 많이 와닿았았으면 좋겠음
+// 우리가 필요한 기능들을 각각 클래스로둠
+// 인터페이스 계약된 애들만 원한ㄹ떄마다 ㅁ원하는 부품을 끼워서 원하느 용도에 맞게 씀
+
+// 우리가 원하는 밀크메이커와 이렇게 
+// 많은 종류의 커피머신이 필요없음
+
+// 저렇게 만ㄷ르 필요가 없음
+
+// 스윗 커피머신을 복사해서 과감하게 지워버림
+
+//노밀크와
+//노슈거 구현함
+
