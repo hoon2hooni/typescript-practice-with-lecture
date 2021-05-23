@@ -1,11 +1,9 @@
-
+{
 interface Stack {
   //interface에서 get mtthod활용하는 방법 알아보기 
   readonly size: number;
   push(value: string): void;
   pop(): string;
-
-
 }
 
 class Stack {
@@ -46,3 +44,4 @@ a.push('아아').push('아이');
 // a.pop().pop().pop(;
 console.log(a.stack);
 
+}

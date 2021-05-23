@@ -22,7 +22,7 @@ class StackImpl implements Stack {
   //여기서 size는 readonly로 해주면 안됨 왜냐하면 
   //push해줄때마다 하나식 변경해야하는데 readonly로 해주면 변경이 
   //되지 않음
-
+  
   private _size: number = 0;
   //이거 이해 못하겠다 더 보자.
   private head?: StackNode
@@ -35,6 +35,7 @@ class StackImpl implements Stack {
     const node: StackNode = { value, next: this.head }
     //그 다음 head를 추가된 노드를 가리키게함
     this.head = node;
+    Docu
     //난 ++this._size 라고 선언함 이거 차이 확인해 보자
     this._size++;
   }
@@ -69,3 +70,7 @@ stack.push("다")
 while (stack.size !== 0) {
   console.log(stack.pop());
 }
+
+//다
+//나
+//가
